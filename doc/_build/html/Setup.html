@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Simulation Setup &mdash; PARAMAGNET 6 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '6',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="PARAMAGNET 6 documentation" href="index.html" />
+    <link rel="next" title="Output" href="Output.html" />
+    <link rel="prev" title="Dependencies" href="Dependencies.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="simulation-setup">
+<h1>Simulation Setup<a class="headerlink" href="#simulation-setup" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="initialisation">
+<h2>Initialisation<a class="headerlink" href="#initialisation" title="Permalink to this headline">¶</a></h2>
+<p>To setup a simulation changes must be made to the <code class="docutils literal"><span class="pre">Initial.cpp</span></code> file and
+the <code class="docutils literal"><span class="pre">Global.cpp</span></code> file. The <code class="docutils literal"><span class="pre">Global.cpp</span></code> file contains the globally defined
+variables in the code.</p>
+<p>The <code class="docutils literal"><span class="pre">Global.cpp</span></code> file contains:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Physical State: variables where the temperature, density, domain size, time period and ionisation state is set</li>
+<li>Collisional Parameters: these should not be changed</li>
+<li>Mesh Variables: change the number of timesteps and mesh size</li>
+<li>Laser Variables: change the peak intensity and wavelength, also one can turn off the ponderomotive and inverse bremmsstrahlung terms if needed</li>
+<li>Output Variables: change the variables to output and how many timesteps should be Output</li>
+<li>Boundary Conditions: choose between periodic and outflow boundary conditions</li>
+</ul>
+</div></blockquote>
+<p>The <code class="docutils literal"><span class="pre">Initial.cpp</span></code> file contains:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Initial Condition: this sets the initial state of the plasma in normalised units.</li>
+<li>Initial Laser: this sets the laser profile at the z=0 boundary</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="openmp">
+<h2>OpenMP<a class="headerlink" href="#openmp" title="Permalink to this headline">¶</a></h2>
+<p>To run in parallel one first has to specify the number of OpenMP threads
+that the program will use. Set this with the command:
+<code class="docutils literal"><span class="pre">export</span> <span class="pre">OMP_NUM_THREADS=N</span></code>
+with N as the number of shared memory processes needed.</p>
+</div>
+<div class="section" id="compilation">
+<h2>Compilation<a class="headerlink" href="#compilation" title="Permalink to this headline">¶</a></h2>
+<p>To compile the code run the command:
+<code class="docutils literal"><span class="pre">make</span> <span class="pre">MAGNET</span></code>
+The makefile should take care of the compilation and linking process.
+Within the makefile one must set the compiler variable to a C++ compiler
+available on the computer.</p>
+</div>
+<div class="section" id="running">
+<h2>Running<a class="headerlink" href="#running" title="Permalink to this headline">¶</a></h2>
+<p>To run the code use the command:
+<code class="docutils literal"><span class="pre">./MAGNET</span></code></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Simulation Setup</a><ul>
+<li><a class="reference internal" href="#initialisation">Initialisation</a></li>
+<li><a class="reference internal" href="#openmp">OpenMP</a></li>
+<li><a class="reference internal" href="#compilation">Compilation</a></li>
+<li><a class="reference internal" href="#running">Running</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Dependencies.html" title="previous chapter">Dependencies</a></li>
+      <li>Next: <a href="Output.html" title="next chapter">Output</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Setup.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Henry Watkins.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/Setup.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

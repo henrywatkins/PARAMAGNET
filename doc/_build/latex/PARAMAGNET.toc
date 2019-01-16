@@ -1,0 +1,16 @@
+\select@language {english}
+\contentsline {chapter}{\numberline {1}Introduction}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}Physics}{3}{section.1.1}
+\contentsline {section}{\numberline {1.2}Numerical Methods}{3}{section.1.2}
+\contentsline {chapter}{\numberline {2}Dependencies}{5}{chapter.2}
+\contentsline {section}{\numberline {2.1}PETSc}{5}{section.2.1}
+\contentsline {section}{\numberline {2.2}OpenMP}{5}{section.2.2}
+\contentsline {chapter}{\numberline {3}Simulation Setup}{7}{chapter.3}
+\contentsline {section}{\numberline {3.1}Initialisation}{7}{section.3.1}
+\contentsline {section}{\numberline {3.2}OpenMP}{7}{section.3.2}
+\contentsline {section}{\numberline {3.3}Compilation}{7}{section.3.3}
+\contentsline {section}{\numberline {3.4}Running}{7}{section.3.4}
+\contentsline {chapter}{\numberline {4}Output}{9}{chapter.4}
+\contentsline {section}{\numberline {4.1}ASCII Output}{9}{section.4.1}
+\contentsline {section}{\numberline {4.2}VTK Output}{9}{section.4.2}
+\contentsline {chapter}{\numberline {5}Indices and tables}{11}{chapter.5}
