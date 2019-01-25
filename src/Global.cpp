@@ -24,8 +24,8 @@
  const int       Z=1;             //The ionization state of the plasma
  const double    period=0.5e-9;  //Time period of simulation in seconds
  const double    xDom=1.0e-3;     //Physical size of simulation in x in metres
- const double    yDom=1.0e-3;    //Physical size of simulation in y in metres
- const double    zDom=0.01e-3;     //Physical size of simulation in z in metres
+ const double    yDom=0.01e-3;    //Physical size of simulation in y in metres
+ const double    zDom=2.0e-3;     //Physical size of simulation in z in metres
  //###################################
  //      Collisional Parameters
  //###################################
@@ -42,10 +42,10 @@
  const double    Lx=xDom/l0;    // x Length, in units of the initial collisional mean free path
  const double    Ly=yDom/l0;    // y length
  const double    Lz=zDom/l0;    // z length
- const int       m=3000;        //number of time steps
- const int       nx=128;         //number of space steps/mesh size in x
- const int       ny=128;      //mesh size in y
- const int       nz=4;         //mesh size in z
+ const int       m=5000;        //number of time steps
+ const int       nx=64;         //number of space steps/mesh size in x
+ const int       ny=4;      //mesh size in y
+ const int       nz=128;         //mesh size in z
  const int      N=nx*ny*nz;       //Total number of mesh points
  const int      vars=17;       //the number of variables being solved
  const double   dt=T/(double)(m-1);
@@ -64,20 +64,20 @@
  const double  wn=2*3.14*l0/wl;     //normalised wavenumber
  const double  nc=omega*omega*3.14e-4/n0;    //normalised critical density
  const double  Intensity=1e18;             //max intensity in watts per square meter
- const double  Pc=0.0;//0.5*Intensity/T0/3e8/(omega*omega*3.14e-4);   //ponderomotive constant
+ const double  Pc=0.5*Intensity/T0/3e8/(omega*omega*3.14e-4);   //ponderomotive constant
  const double  IBc=Intensity/T0/3e8/(omega*omega*3.14e-4);               //IB constant
  const double  theta=1.0;//0.707;     ///cosine of angle between polarisation
  //################################
  //     Set Output variables
  //################################
-const int tfrac=30;
+const int tfrac=50;
 const int nout=1;        //Denstiy
 const int Vout=0;        //Velocity
 const int Tout=1;        //Temperature
 const int Eout=0;        //Electric Field
-const int Bout=1;        //Magnetic Field
+const int Bout=0;        //Magnetic Field
 const int jout=0;        //Current
-const int qout=1;        //Heat Flow
+const int qout=0;        //Heat Flow
 const int lout=1;
 const int l2out=0;
 
@@ -93,4 +93,4 @@ const int  xbcon = 0;
 //y boundaries
 const int  ybcon = 0;
 //z boundaries
-const int  zbcon = 0;
+const int  zbcon = 3;

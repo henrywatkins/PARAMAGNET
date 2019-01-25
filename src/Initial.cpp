@@ -29,21 +29,6 @@ void InitialCondition(double *initvalue){
    int nin,Vxin,Vyin,Vzin,Tin,Exin,Eyin,Ezin,Bxin,Byin,Bzin,jxin,jyin,jzin,qxin,qyin,qzin, liin,lrin;
 
 
-   stringstream ss;
-   double array[nx][ny][nz];
-   string filename="./profile.txt";
-   ifstream file(filename.c_str());
-   if (file.is_open()) {
-     for (size_t k = 0; k < nz; k++) {
-       for (size_t j = 0; j < ny; j++) {
-         for (size_t i = 0; i < nx; i++) {
-           file >> array[i][j][k];
-         }
-       }
-     }
-   }
-   file.close();
-
    for (k=0; k<nz; k++) {
        for (j=0; j<ny; j++) {
            for (i=0; i<nx; i++) {
@@ -80,13 +65,13 @@ void InitialCondition(double *initvalue){
                //#########################################
 
                initvalue[nin]=1.0;//+(i*dx*0.93/Lx+k*dz*0.36/Lz);
-               initvalue[Tin]=1.0+0.01*array[i][j][k];
+               initvalue[Tin]=1.0;
                //initvalue[Vxin]=-0.1*sin(2*3.14*xpara)*sn;
                //initvalue[Vyin]=0.1*sin(2*3.14*xpara)*cs;
                //initvalue[Vzin]=0.1*cos(2*3.14*xpara);
                //initvalue[Bxin]=7.5*tei0*(1.75e11)*0.36;
                //initvalue[Byin]=5*tei0*(1.75e11)*(1+k*dz/Lz);///sqrt(2);
-               initvalue[Bzin]=5*tei0*(1.75e11);
+               //initvalue[Bzin]=5*tei0*(1.75e11);
            }
        }
    }
@@ -98,6 +83,19 @@ void InitialLaser(std::complex<double> *initvalue, std::complex<double> *initval
  //Gaussian Beam Variables
  double Rlength, phi, waist,waist0,Rz, sep;
 
+ double array[nx][ny][nz];
+ string filename="./bin/profile.txt";
+ ifstream file(filename.c_str());
+ if (file.is_open()) {
+   for (size_t k = 0; k < nz; k++) {
+     for (size_t j = 0; j < ny; j++) {
+       for (size_t i = 0; i < nx; i++) {
+         file >> array[i][j][k];
+       }
+     }
+   }
+ }
+ file.close();
  //waist0=77e-6;
  //Rlength=3.14*waist0*waist0/wl;
  //Rz=-0.5*zDom*(1+pow(Rlength/0.5/zDom,2.0));
@@ -111,7 +109,7 @@ void InitialLaser(std::complex<double> *initvalue, std::complex<double> *initval
    for (int i = 1; i < nx-1; i++) {
 
      l=i+nx*j+nx*ny;
-     initvalue[l]=complex<double>(exp(-0.5*pow((i*dx-nx*dx/2)/waist,2.0)-0.5*pow((j*dx-ny*dy/2)/waist,2.0)),0.0);
+     initvalue[l]=complex<double>(exp(-0.5*pow((i*dx-nx*dx/2)/waist,2.0)),0.0);
      initvalue2[l]=complex<double>(0.0,0.0);
 
                              //3D//waist0*exp(-pow((i-nx/2)*dx*l0/waist,2.0)-pow((j-ny/2)*dy*l0/waist,2.0))*cos(0.5*wn*(pow((i-nx/2)*dx,2.0)+pow((j-ny/2)*dy,2.0))*l0/Rz-phi)/waist,waist0*exp(-pow((i-nx/2)*dx*l0/waist,2.0)-pow((j-ny/2)*dy*l0/waist,2.0))*sin(0.5*wn*(pow((i-nx/2)*dx,2.0)+pow((j-ny/2)*dy,2.0))*l0/Rz-phi)/waist

@@ -157,12 +157,10 @@ int main(int argc,char **argv)
 
     PetscPrintf(PETSC_COMM_WORLD,"Initial Conditions Set \n"); //use PetscPrintf instead of cout because in parallel cout will print as many times as there are processes
 
-    //InitialLaser(user.laser);
-
     delete[] initvalue;
     delete[] ix;
-
-
+    InitialLaser(user.laser,user.laser2,0);
+    
     //###################################################
     //
     //      SECTION 2.3: Solution method of the nonlinear
@@ -178,7 +176,6 @@ int main(int argc,char **argv)
 
 
     //The current options set for the PC, KSP methods have been found to give the best performance on the tests I have run. They are however optional.
-
     SNESGetKSP(snes, &ksp);
     SNESSetTolerances(snes,1e-9,1e-9,PETSC_DEFAULT,PETSC_DEFAULT,500);
     KSPSetType(ksp, KSPGMRES);              //Choose the KSP linear method being used
@@ -288,7 +285,6 @@ int main(int argc,char **argv)
       //    SECTION 3.4: Laser solver
       //
       //##################################################
-      InitialLaser(user.laser,user.laser2,t);
       PARAXIAL(user,user.laser);
       //PARAXIAL(user,user.laser2);
 
