@@ -1,0 +1,5 @@
+# Contributors to the PARAMAGNET code
+
+##Creator/Maintainer
+
+*Henry Watkins (Imperial College London)
