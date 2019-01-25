@@ -223,38 +223,38 @@ int main(int argc,char **argv)
 
     //Density output
     ofstream myfile1;
-    myfile1.open("./ASCIIOutput/noutput.txt");
+    myfile1.open("./output/ASCIIOutput/noutput.txt");
 
     //Velocity output
     ofstream myfile2;
-    myfile2.open("./ASCIIOutput/Voutput.txt");
+    myfile2.open("./output/ASCIIOutput/Voutput.txt");
 
     //Temperature output
     ofstream myfile3;
-    myfile3.open("./ASCIIOutput/Toutput.txt");
+    myfile3.open("./output/ASCIIOutput/Toutput.txt");
 
     //Electric field output
     ofstream myfile4;
-    myfile4.open("./ASCIIOutput/Eoutput.txt");
+    myfile4.open("./output/ASCIIOutput/Eoutput.txt");
 
     //Magnetic field output
     ofstream myfile5;
-    myfile5.open("./ASCIIOutput/Boutput.txt");
+    myfile5.open("./output/ASCIIOutput/Boutput.txt");
 
     //Current output
     ofstream myfile6;
-    myfile6.open("./ASCIIOutput/joutput.txt");
+    myfile6.open("./output/ASCIIOutput/joutput.txt");
 
     //Heat flow output
     ofstream myfile7;
-    myfile7.open("./ASCIIOutput/qoutput.txt");
+    myfile7.open("./output/ASCIIOutput/qoutput.txt");
 
     //laser output
     ofstream myfile8;
-    myfile8.open("./ASCIIOutput/laserintensity.txt");
+    myfile8.open("./output/ASCIIOutput/laserintensity.txt");
 
     ofstream myfile9;
-    myfile9.open("./ASCIIOutput/laserintensity2.txt");
+    myfile9.open("./output/ASCIIOutput/laserintensity2.txt");
 
 
 
@@ -267,7 +267,7 @@ int main(int argc,char **argv)
     //###################################################
 
     ofstream parafile;
-    parafile.open("./VTKOutput/VTKoutput.0.vtk");
+    parafile.open("./output/VTKOutput/VTKoutput.0.vtk");
 
     VTKOutput(parafile,y,user.laser,user.laser2);
 
@@ -361,7 +361,7 @@ int main(int argc,char **argv)
           //set filename
 
           ostringstream filename;
-          filename<<"./VTKOutput/VTKoutput."<<t<<".vtk";
+          filename<<"./output/VTKOutput/VTKoutput."<<t<<".vtk";
 
           //open file and output
 

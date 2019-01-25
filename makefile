@@ -16,26 +16,32 @@ include ${PETSC_DIR}/lib/petsc/conf/rules
 CC= mpicc#${PETSC_DIR}/${PETSC_ARCH}/bin/mpicxx
 CFLAGS= -fopenmp -O3
 LDFLAGS= -fopenmp
-OBJECTS= MAGNET.o Global.o TransportCoeff.o Output.o Initial.o 
+OBJS= MAGNET.o Global.o TransportCoeff.o Output.o Initial.o
+SRCS= MAGNET.cpp Global.cpp TransportCoeff.cpp Output.cpp Initial.cpp
+BINS=MAGNET
 INCLUDES= -I${PETSC_DIR}/include -I${PETSC_DIR}/${PETSC_ARCH}/include
-LIBS= 
-#COMPILE=mpicc
+LIBS=
+DIR=~/Desktop/PARAMAGENT
+VPATH=src
 
-MAGNET: ${OBJECTS}
-	${CC} ${LDFLAGS} ${OBJECTS}  ${PETSC_LIB} -o MAGNET
+all: MAGNET
+
+MAGNET: ${OBJS}
+	${CC} ${LDFLAGS} ${OBJS} ${PETSC_LIB} -o ${BINS}
+	mv MAGNET bin
 	rm *.o
 
 MAGNET.o: MAGNET.cpp  Global.h TransportCoeff.h Output.h Initial.h
-	${CC} -c ${CFLAGS} MAGNET.cpp ${INCLUDES}
+	${CC} -c ${CFLAGS} $< ${INCLUDES}
 
 Global.o: Global.cpp Global.h
-	${CC} -c ${CFLAGS} Global.cpp
+	${CC} -c ${CFLAGS} $<
 
 TransportCoeff.o: TransportCoeff.cpp TransportCoeff.h
-	${CC} -c ${CFLAGS} TransportCoeff.cpp
+	${CC} -c ${CFLAGS} $<
 
 Output.o: Output.cpp Output.h
-	${CC} -c ${CFLAGS} Output.cpp
+	${CC} -c ${CFLAGS} $<
 
 Initial.o: Initial.cpp Initial.h
-	${CC} -c ${CFLAGS} Initial.cpp
+	${CC} -c ${CFLAGS} $<
