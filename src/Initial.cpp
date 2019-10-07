@@ -82,20 +82,6 @@ void InitialLaser(std::complex<double> *initvalue, std::complex<double> *initval
 
  //Gaussian Beam Variables
  double Rlength, phi, waist,waist0,Rz, sep;
-
- double array[nx][ny][nz];
- string filename="./bin/profile.txt";
- ifstream file(filename.c_str());
- if (file.is_open()) {
-   for (size_t k = 0; k < nz; k++) {
-     for (size_t j = 0; j < ny; j++) {
-       for (size_t i = 0; i < nx; i++) {
-         file >> array[i][j][k];
-       }
-     }
-   }
- }
- file.close();
  //waist0=77e-6;
  //Rlength=3.14*waist0*waist0/wl;
  //Rz=-0.5*zDom*(1+pow(Rlength/0.5/zDom,2.0));
@@ -110,11 +96,7 @@ void InitialLaser(std::complex<double> *initvalue, std::complex<double> *initval
 
      l=i+nx*j+nx*ny;
      initvalue[l]=complex<double>(exp(-0.5*pow((i*dx-nx*dx/2)/waist,2.0)),0.0);
-     initvalue2[l]=complex<double>(0.0,0.0);
 
-                             //3D//waist0*exp(-pow((i-nx/2)*dx*l0/waist,2.0)-pow((j-ny/2)*dy*l0/waist,2.0))*cos(0.5*wn*(pow((i-nx/2)*dx,2.0)+pow((j-ny/2)*dy,2.0))*l0/Rz-phi)/waist,waist0*exp(-pow((i-nx/2)*dx*l0/waist,2.0)-pow((j-ny/2)*dy*l0/waist,2.0))*sin(0.5*wn*(pow((i-nx/2)*dx,2.0)+pow((j-ny/2)*dy,2.0))*l0/Rz-phi)/waist
-                             //2D//waist0*exp(-pow((i-nx/2)*dx*l0/waist,2.0))*cos(0.5*wn*(pow((i-nx/2)*dx,2.0))*l0/Rz-phi)/waist,waist0*exp(-pow((i-nx/2)*dx*l0/waist,2.0))*sin(0.5*wn*(pow((i-nx/2)*dx,2.0))*l0/Rz-phi)/waist
-                             //array[i][j],0.0
-   }                         //(1+0.01*im)*exp(-pow((i-nx/2)*dx/waist,4.0)),0.01*re*exp(-pow((i-nx/2)*dx/waist,4.0))
+   }                        
  }
 }
